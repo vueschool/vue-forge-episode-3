@@ -1,0 +1,22 @@
+### Open AI Chat API 
+POST https://api.openai.com/v1/chat/completions
+Content-Type: application/json
+Authorization: Bearer {{$dotenv NUXT_OPENAI_API_KEY}}
+
+{
+  "model": "gpt-3.5-turbo",
+  "messages": [{"role": "user", "content": "Say this is a test!"}],
+  "temperature": 0,
+  "n": 1
+}
+
+### Open AI Image Generation API (DALL-E)
+POST https://api.openai.com/v1/images/generations
+Content-Type: application/json
+Authorization: Bearer {{$dotenv NUXT_OPENAI_API_KEY}}
+
+{
+  "prompt": "a white siamese cat",
+  "n": 1,
+  "size": "1024x1024"
+}
