@@ -12,19 +12,35 @@ export default defineEventHandler(async (event) => {
   });
   const openai = new OpenAIApi(configuration);
 
-  // 1. make a request to the Chat API to generate the DALL-E prompt
-  // 2 make a request to DALL-E to generate the image
-  // 3. return the image as a base64 encoded string for using with html-to-image on the front-end
+  const { data: prompt } = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    temperature: 0,
+    messages: [
+      { role: "system", content: "You are a prompt enginer for DALL-E" },
+      {
+        role: "user",
+        content: `Provide 4 physical items that represent 4 topics from this article.
+        ${url}`,
+      },
+    ],
+  });
 
-  /*HINT: The following code is useful for creating a base64 encoded string for an image
+  if (!prompt?.choices[0].message?.content) {
+    throw new Error("DALL-E prompt not generated");
+  }
+  const dallePrompt = prompt?.choices[0].message?.content.trim();
 
+  const { data } = await openai.createImage({
+    prompt:
+      " black and white sticker style illustration. stylize the items to be a repeating pattern, white background" +
+      dallePrompt,
+  });
+  const imageURL = data.data[0].url;
+  if (!imageURL) throw new Error("Image not generated");
   const res = (await $fetch(imageURL, {
     responseType: "arrayBuffer",
   })) as Buffer;
   const base64String = Buffer.from(res).toString("base64");
+
   return `data:image/jpeg;base64,${base64String}`;
-
-  */
-
-  return "/image-background.jpg"; // replae this with the base64 encoded generated image
 });
