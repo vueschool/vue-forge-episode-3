@@ -25,7 +25,7 @@ const gradients = [
 ];
 </script>
 <template>
-  <CardGeneric title="Images">
+  <CardGeneric title="Images" :state="state">
     <template #body>
       <div class="md:flex gap-2 flex-wrap">
         <div
