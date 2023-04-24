@@ -3,6 +3,8 @@ defineProps({
   url: { required: true, type: String },
 });
 
+const { image, state, title, generate } = useImageAi();
+
 const gradients = [
   {
     start: "#00af99",
@@ -30,7 +32,16 @@ const gradients = [
           v-for="gradient in gradients"
           class="mb-5 md:mb-0 md:w-1/3 flex-grow"
         >
-          <ImagePlaceholder :loading="false" :gradient="gradient" />
+          <div v-if="image">
+            <ImageCanvas :bgImage="image" :title="title" :gradient="gradient" />
+            <span class="text-sm">(right click image to save)</span>
+          </div>
+
+          <ImagePlaceholder
+            :loading="state === 'loading'"
+            v-else
+            :gradient="gradient"
+          />
         </div>
       </div>
     </template>
