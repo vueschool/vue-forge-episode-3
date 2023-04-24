@@ -15,11 +15,13 @@ async function handleImport(e: typeof form.value) {
 }
 </script>
 <template>
-  <h1 class="text-4xl my-10">Social Media Post Generator</h1>
-  <UrlForm v-bind="form" @submit="handleImport"></UrlForm>
-  <div>
-    <CardTwitter ref="twitterCard" v-bind="form" />
-    <CardFacebook ref="facebookCard" v-bind="form" />
-    <!-- Images Card Here -->
+  <div class="mx-5">
+    <h1 class="text-4xl my-10">Social Media Post Generator</h1>
+    <UrlForm v-bind="form" @submit="handleImport"></UrlForm>
+    <div>
+      <CardTwitter ref="twitterCard" v-bind="form" />
+      <CardFacebook ref="facebookCard" v-bind="form" />
+      <CardImages :url="form.url" />
+    </div>
   </div>
 </template>
