@@ -3,6 +3,7 @@ import fs from "fs";
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
+  const url = body.url; // the article URL
 
   // Setup open AI
   const { OPENAI_API_KEY } = useRuntimeConfig();
