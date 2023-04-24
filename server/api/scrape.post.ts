@@ -4,6 +4,6 @@ export default defineEventHandler(async (event) => {
   // scrape the provided article URL here
 
   return {
-    title: "return the title here",
+    title: "The scraped title here",
   };
 });

@@ -24,4 +24,6 @@ export default defineEventHandler(async (event) => {
   return `data:image/jpeg;base64,${base64String}`;
 
   */
+
+  return "/image-background.jpg"; // replae this with the base64 encoded generated image
 });

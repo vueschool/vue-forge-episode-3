@@ -7,11 +7,13 @@ const form = ref({
 const twitterCard = ref();
 const facebookCard = ref();
 
+const { generate: generateImage } = useImageAi();
 async function handleImport(e: typeof form.value) {
   form.value = { ...e };
   if (!form.value.url) return;
   twitterCard.value.generate();
   facebookCard.value.generate();
+  generateImage(form.value.url);
 }
 </script>
 <template>
