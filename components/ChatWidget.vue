@@ -25,17 +25,14 @@ const messagesForAPI = computed(() =>
   }))
 );
 
+const { chat } = useChatAi({ agent: "customerSupport" });
 async function handleNewMessage(message: Message) {
   messages.value.push(message);
   usersTyping.value.push(bot.value);
-  const res = await $fetch("/api/ai", {
-    method: "POST",
-    body: {
-      messages: messagesForAPI.value,
-    },
-  });
 
-  if (!res.choices[0].message?.content) return;
+  const res = await chat({ messages: messagesForAPI.value });
+
+  if (!res || !res.choices[0].message?.content) return;
 
   const msg = {
     id: res.id,
