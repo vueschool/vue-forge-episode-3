@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Social Media Announcement Generator",
+    "version": "1.0",
+    "description": "My awesome extension that iframes in https://localhost:3000 and passes a query variable called url with the current tabs URL in it.",
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+      },
+    "action": {
+      "default_icon": "icon48.png",
+      "default_popup": "popup.html"
+    },
+    "permissions": [
+      "activeTab",
+      "tabs"
+    ]
+  }
