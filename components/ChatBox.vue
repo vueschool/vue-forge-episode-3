@@ -46,11 +46,17 @@ watch(
 </script>
 <template>
   <div class="fixed bottom-[10px] right-[10px]">
-    <button v-show="!open" @click="open = true" class="bg-blue-500 p-3 rounded">
+    <button
+      v-show="!open"
+      @click="open = true"
+      class="bg-blue-500 p-3 rounded"
+      data-test="chat-widget-trigger"
+    >
       <IconChat class="h-8 w-8 text-white" />
     </button>
     <div
       v-if="open"
+      data-test="chat-widget-content"
       class="box bg-gray-300 dark:bg-gray-800 rounded w-[450px] overflow-hidden"
     >
       <!-- Header -->
@@ -88,6 +94,7 @@ watch(
           </ul>
         </div>
         <ChatBubble
+          data-test="chat-bubble"
           v-for="message in messages"
           :key="message.id"
           :message="message"
@@ -102,6 +109,7 @@ watch(
       <!-- Footer -->
       <footer class="p-2">
         <input
+          data-test="chat-input"
           ref="input"
           class="input w-full px-2 block"
           type="text"
