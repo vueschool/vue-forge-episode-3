@@ -1,0 +1,21 @@
+{
+  "id": "chatcmpl-79FnscACWG1ukKKecih8njffCp1kj",
+  "object": "chat.completion",
+  "created": 1682440056,
+  "model": "gpt-3.5-turbo-0301",
+  "usage": {
+    "prompt_tokens": 300,
+    "completion_tokens": 17,
+    "total_tokens": 317
+  },
+  "choices": [
+    {
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I assist you with the 'Social Media Post Generator' app?"
+      },
+      "finish_reason": "stop",
+      "index": 0
+    }
+  ]
+}
