@@ -82,7 +82,7 @@ watch(
         </button>
       </header>
       <!-- Messages -->
-      <div class="messages p-4 overflow-y-scroll max-h-[80vh]" ref="messageBox">
+      <div class="messages p-4 overflow-y-auto max-h-[80vh]" ref="messageBox">
         <div v-if="!messages.length" class="text-center w-[350px] m-auto">
           <strong class="text-lg">Chat with Botman!</strong>
           <p>Our A.I. powered assistant</p>
