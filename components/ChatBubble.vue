@@ -29,8 +29,9 @@ defineProps<{
     </div>
     <div
       data-test="chat-bubble-text"
-      class="chat-bubble py-0 prose prose-sm bg-white dark:bg-gray-900 max-w-max w-full"
+      class="chat-bubble py-0 prose prose-sm dark:bg-gray-900 max-w-max w-full"
       :class="{
+        'bg-white': !myMessage,
         'dark:bg-gray-700 bg-gray-600 dark:text-inherit text-white': myMessage,
       }"
     >
